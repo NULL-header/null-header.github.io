@@ -11,11 +11,15 @@
     "dev": "webpack-dev-server --mode development --env development --open --hot --progress",
     "lint:ts": "run-s 'lint:ts:* -- {1}' --",
     "lint:ts:eslint": "eslint",
-    "lint:ts:prettier": "prettier"
+    "lint:ts:prettier": "prettier",
+    "lint:md":"run-s 'lint:md:* -- {1}' --",
+    "lint:md:markdownlint":"markdownlint -c .markdownlintrc.jsonc",
+    "lint:md:prettier":"prettier"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@commitlint/types": "^16.2.1",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -45,6 +49,7 @@
     "immutability-helper": "^3.1.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.8",
+    "markdownlint-cli": "^0.31.1",
     "prettier": "^2.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
