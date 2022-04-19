@@ -26,7 +26,7 @@ export const Tree = ({ contents }: TreeProps) => {
         <Item
           {...props}
           onClick={() => {
-            setLevels((nextLevels) => [...levels, val.under]);
+            setLevels((nextLevels) => [...nextLevels, val.under]);
           }}
         />
       );
