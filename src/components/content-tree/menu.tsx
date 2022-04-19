@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { Box } from "@chakra-ui/react";
-import { ContentProps } from "./content";
+import { ItemProps } from "./item";
 
-type Item = React.FC<ContentProps>;
+type Item = React.FC<Omit<ItemProps, "onClick">>;
 
 interface MenuProps {
   itemRecord: Record<string, Item>;
