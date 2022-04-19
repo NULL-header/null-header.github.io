@@ -1,4 +1,5 @@
 {
   "*.ts":"yarn lint:ts",
-  "*.tsx":"yarn lint:ts"
+  "*.tsx":"yarn lint:ts",
+  "*.md":"yarn lint:md"
 }

@@ -11,7 +11,10 @@
     "dev": "webpack-dev-server --mode development --env development --open --hot --progress",
     "lint:ts": "run-s 'lint:ts:* -- {1}' --",
     "lint:ts:eslint": "eslint",
-    "lint:ts:prettier": "prettier"
+    "lint:ts:prettier": "prettier",
+    "lint:md":"run-s 'lint:md:* -- {1}' --",
+    "lint:md:markdownlint":"markdownlint -c .markdownlintrc.jsonc",
+    "lint:md:prettier":"prettier"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
