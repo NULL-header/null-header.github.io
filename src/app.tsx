@@ -1,7 +1,6 @@
 import React from "react";
 import { extendTheme, Box, ChakraProvider } from "@chakra-ui/react";
-import { Menu } from "./components/content-tree/menu";
-import { Content } from "./components/content-tree/content";
+import { Tree } from "./components/content-tree/tree";
 
 const theme = extendTheme({
   styles: {
@@ -17,12 +16,19 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box height="100vh" width="100vw">
-      <Menu
-        itemRecord={{
-          title1: Content,
-          title2: Content,
-          title3: Content,
-          title4: Content,
+      <Tree
+        contents={{
+          title1: { isContent: true, description: "" },
+          title2: {
+            isContent: false,
+            description: "",
+            under: {
+              nested1: { isContent: true, description: "" },
+              nested2: { isContent: true, description: "" },
+            },
+          },
+          title3: { isContent: true, description: "" },
+          title4: { isContent: true, description: "" },
         }}
       />
     </Box>
