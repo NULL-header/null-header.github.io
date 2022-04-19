@@ -17,7 +17,14 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box height="100vh" width="100vw">
-      <Menu itemRecord={{ title1: Content, title2: Content }} />
+      <Menu
+        itemRecord={{
+          title1: Content,
+          title2: Content,
+          title3: Content,
+          title4: Content,
+        }}
+      />
     </Box>
   </ChakraProvider>
 );
