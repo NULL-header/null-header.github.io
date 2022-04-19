@@ -1,6 +1,7 @@
 import React from "react";
 import { extendTheme, Box, ChakraProvider } from "@chakra-ui/react";
-import { HelloWorld } from "./components/HelloWorld";
+import { Menu } from "./components/content-tree/menu";
+import { Content } from "./components/content-tree/content";
 
 const theme = extendTheme({
   styles: {
@@ -16,7 +17,14 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box height="100vh" width="100vw">
-      <HelloWorld />
+      <Menu
+        itemRecord={{
+          title1: Content,
+          title2: Content,
+          title3: Content,
+          title4: Content,
+        }}
+      />
     </Box>
   </ChakraProvider>
 );
