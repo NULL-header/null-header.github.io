@@ -8,9 +8,10 @@
     "tsnode": "ts-node src/index.ts",
     "watch": "tsc -p tsconfig.json -w",
     "build": "webpack --mode production --env.production --progress",
-    "lint": "eslint src/*.ts*",
-    "lint:fix": "eslint src/*.ts* --fix",
-    "dev": "webpack-dev-server --mode development --env development --open --hot --progress"
+    "dev": "webpack-dev-server --mode development --env development --open --hot --progress",
+    "lint:ts":"run-s 'lint:ts:* -- {1}' --",
+    "lint:ts:eslint":"eslint",
+    "lint:ts:prettier":"prettier"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
