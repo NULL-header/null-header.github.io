@@ -4,24 +4,15 @@ import { Circle } from "@chakra-ui/react";
 export interface ItemProps {
   title: string;
   isCurrent: boolean;
-  onOver: () => void;
-  onOut: () => void;
   onClick?: () => void;
 }
 
-export const Item = ({
-  title,
-  isCurrent,
-  onOver,
-  onOut,
-  onClick,
-}: ItemProps) => (
+export const Item = ({ title, isCurrent, onClick }: ItemProps) => (
   <Circle
-    bg={isCurrent ? "white" : "tomato"}
+    bg="tomato"
     minHeight="10%"
-    onMouseEnter={onOver}
-    onMouseLeave={onOut}
     onClick={onClick}
+    _hover={{ background: "white" }}
   >
     {title}
   </Circle>

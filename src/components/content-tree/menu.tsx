@@ -13,13 +13,7 @@ export const Menu = ({ itemRecord }: MenuProps) => {
   return (
     <Box height="100%">
       {Object.entries(itemRecord).map(([title, C]) => (
-        <C
-          key={title}
-          title={title}
-          isCurrent={current == title}
-          onOut={() => setCurrent("")}
-          onOver={() => setCurrent(title)}
-        />
+        <C key={title} title={title} isCurrent={current == title} />
       ))}
     </Box>
   );
