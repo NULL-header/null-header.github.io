@@ -12,14 +12,17 @@
     "lint:ts": "run-s 'lint:ts:* -- {1}' --",
     "lint:ts:eslint": "eslint",
     "lint:ts:prettier": "prettier",
-    "lint:md":"run-s 'lint:md:* -- {1}' --",
-    "lint:md:markdownlint":"markdownlint -c .markdownlintrc.jsonc",
-    "lint:md:prettier":"prettier"
+    "lint:md": "run-s 'lint:md:* -- {1}' --",
+    "lint:md:markdownlint": "markdownlint -c .markdownlintrc.jsonc",
+    "lint:md:prettier": "prettier"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^1.8.8",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@commitlint/types": "^16.2.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -44,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.4.0",
     "eslint-plugin-standard": "^5.0.0",
     "fork-ts-checker-webpack-plugin": "^7.2.6",
+    "framer-motion": "^6",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
     "immutability-helper": "^3.1.1",
