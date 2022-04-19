@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ItemProps, Item } from "./item";
 import { Menu } from "./menu";
 
@@ -14,13 +14,22 @@ interface TreeProps {
 }
 
 export const Tree = ({ contents }: TreeProps) => {
-  const record = Object.entries(contents).reduce((a, [key, val]) => {
+  const [levels, setLevels] = useState([contents]);
+  const level = levels[levels.length - 1];
+  const record = Object.entries(level).reduce((a, [key, val]) => {
     if (val.isContent) {
       const content = (props: ItemProps) => <Item {...props} />;
       // eslint-disable-next-line no-param-reassign
       a[key] = content;
     } else {
-      const folder = (props: ItemProps) => <Item {...props} />;
+      const folder = (props: ItemProps) => (
+        <Item
+          {...props}
+          onClick={() => {
+            setLevels((nextLevels) => [...levels, val.under]);
+          }}
+        />
+      );
       // eslint-disable-next-line no-param-reassign
       a[key] = folder;
     }
