@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { keyframes, Box } from "@chakra-ui/react";
+import { keyframes, Box, Button } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ItemProps, Item } from "./item";
 import { Menu } from "./menu";
@@ -40,25 +40,29 @@ export const Tree = ({ contents }: TreeProps) => {
     [],
   );
 
+  const back = useCallback(() => {
+    setLevels((lastLevels) => lastLevels.slice(0, -1));
+  }, []);
+
   return (
-    <Box
-      outline="solid"
-      width="80%"
-      height="80%"
-      overflow="hidden"
-      display="grid"
-      gridTemplateColumns="1fr"
-      sx={{
-        "*": {
-          gridRowStart: 1,
-          gridColumnStart: 1,
-        },
-      }}
-    >
-      <Menu
-        itemRecord={makeRecord(levels[levels.length - 1])}
-        level={levels.length}
-      />
+    <Box width="80%" height="80%" outline="solid">
+      <Box
+        overflow="hidden"
+        display="grid"
+        gridTemplateColumns="1fr"
+        sx={{
+          "*": {
+            gridRowStart: 1,
+            gridColumnStart: 1,
+          },
+        }}
+      >
+        <Menu
+          itemRecord={makeRecord(levels[levels.length - 1])}
+          level={levels.length}
+        />
+      </Box>
+      {levels.length > 1 ? <Button onClick={back}>back</Button> : ""}
     </Box>
   );
 };
