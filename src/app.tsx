@@ -15,7 +15,13 @@ const theme = extendTheme({
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box height="100vh" width="100vw">
+    <Box
+      height="100vh"
+      width="100vw"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Tree
         contents={{
           title1: { isContent: true, description: "" },
