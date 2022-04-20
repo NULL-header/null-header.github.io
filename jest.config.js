@@ -1,4 +1,5 @@
 module.exports = {
+  testEnvironment: "jsdom",
   roots: ["./tests"],
   testMatch: ["**/?(*.)+(spec|test).+(ts|tsx|js)"],
   transform: {
