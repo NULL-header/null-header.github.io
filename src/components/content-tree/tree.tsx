@@ -1,6 +1,5 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { keyframes, Box, Button } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useCallback } from "react";
+import { Box, Button } from "@chakra-ui/react";
 import { ItemProps, Item } from "./item";
 import { Menu } from "./menu";
 
