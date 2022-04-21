@@ -6,7 +6,7 @@ import "@testing-library/jest-dom";
 
 describe("integration test for menu", () => {
   it("show menu", () => {
-    render(<Menu itemRecord={{ test1: Item }} level={1} />);
+    render(<Menu itemRecord={{ test1: Item }} />);
     expect(screen.getByText("test1")).toBeInTheDocument();
   });
 });

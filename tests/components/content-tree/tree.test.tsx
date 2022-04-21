@@ -15,7 +15,6 @@ describe("intergration test for tree", () => {
             under: { nested1: { isContent: true, description: "", path: "" } },
           },
         }}
-        onClickContents={() => {}}
       />,
     );
     expect(screen.getByText("test1")).toBeInTheDocument();
@@ -32,7 +31,6 @@ describe("intergration test for tree", () => {
             under: { nested1: { isContent: true, description: "", path: "" } },
           },
         }}
-        onClickContents={() => {}}
       />,
     );
     act(() => {
