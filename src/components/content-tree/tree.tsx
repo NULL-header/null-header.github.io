@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import { Box, Button } from "@chakra-ui/react";
 import { ItemProps, Item } from "./item";
 import { Menu } from "./menu";
+import { Viewer } from "./viewer";
+import { SlideBox } from "../slide-box";
 
 type Contents = {
   [x: string]: { description: string } & (
@@ -12,16 +14,20 @@ type Contents = {
 
 interface TreeProps {
   contents: Contents;
-  onClickContents: (path: string) => void;
 }
-export const Tree = ({ contents, onClickContents }: TreeProps) => {
-  const [levels, setLevels] = useState<Contents[]>([contents]);
+export const Tree = ({ contents }: TreeProps) => {
+  const [levels, setLevels] = useState<(Contents | string)[]>([contents]);
   const makeRecord = useCallback(
     (level: Contents) =>
       Object.entries(level).reduce((a, [key, val]) => {
         if (val.isContent) {
           const content = (props: ItemProps) => (
-            <Item {...props} onClick={() => onClickContents(val.path)} />
+            <Item
+              {...props}
+              onClick={() =>
+                setLevels((lastLevels) => [...lastLevels, val.path])
+              }
+            />
           );
           // eslint-disable-next-line no-param-reassign
           a[key] = content;
@@ -39,7 +45,7 @@ export const Tree = ({ contents, onClickContents }: TreeProps) => {
         }
         return a;
       }, {} as Record<string, React.FC<ItemProps>>),
-    [onClickContents],
+    [],
   );
 
   const back = useCallback(() => {
@@ -47,22 +53,39 @@ export const Tree = ({ contents, onClickContents }: TreeProps) => {
   }, []);
 
   const current = levels[levels.length - 1];
+  const isView = typeof current === "string";
   return (
-    <Box width="80%" height="80%" outline="solid">
-      <Box
-        overflow="hidden"
-        display="grid"
-        gridTemplateColumns="1fr"
-        sx={{
-          "*": {
-            gridRowStart: 1,
-            gridColumnStart: 1,
-          },
-        }}
-      >
-        <Menu itemRecord={makeRecord(current)} level={levels.length} />
-      </Box>
+    <SlideBox
+      height="100%"
+      width="100%"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      key={isView ? "view" : "tree"}
+    >
+      {isView ? (
+        <Viewer />
+      ) : (
+        <Box width="80%" height="80%" outline="solid" overflow="hidden">
+          <Box
+            overflow="hidden"
+            display="grid"
+            gridTemplateColumns="1fr"
+            sx={{
+              "*": {
+                gridRowStart: 1,
+                gridColumnStart: 1,
+              },
+            }}
+            height="100%"
+          >
+            <SlideBox key={levels.length}>
+              <Menu itemRecord={makeRecord(current)} />
+            </SlideBox>
+          </Box>
+        </Box>
+      )}
       {levels.length > 1 ? <Button onClick={back}>back</Button> : ""}
-    </Box>
+    </SlideBox>
   );
 };
