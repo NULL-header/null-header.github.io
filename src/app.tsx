@@ -1,6 +1,7 @@
 import React from "react";
 import { extendTheme, Box, ChakraProvider } from "@chakra-ui/react";
-import { Tree } from "./components/content-tree/tree";
+import { Tree } from "./components/content-tree";
+import { SlideBox } from "./components/slide-box";
 
 const theme = extendTheme({
   styles: {
@@ -15,26 +16,20 @@ const theme = extendTheme({
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box
-      height="100vh"
-      width="100vw"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Box height="100vh" width="100vw">
       <Tree
         contents={{
-          title1: { isContent: true, description: "" },
+          title1: { isContent: true, description: "", path: "" },
           title2: {
             isContent: false,
             description: "",
             under: {
-              nested1: { isContent: true, description: "" },
-              nested2: { isContent: true, description: "" },
+              nested1: { isContent: true, description: "", path: "" },
+              nested2: { isContent: true, description: "", path: "" },
             },
           },
-          title3: { isContent: true, description: "" },
-          title4: { isContent: true, description: "" },
+          title3: { isContent: true, description: "", path: "" },
+          title4: { isContent: true, description: "", path: "" },
         }}
       />
     </Box>

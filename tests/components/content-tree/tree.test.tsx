@@ -8,11 +8,11 @@ describe("intergration test for tree", () => {
     render(
       <Tree
         contents={{
-          test1: { description: "", isContent: true },
+          test1: { description: "", isContent: true, path: "" },
           test2: {
             isContent: false,
             description: "",
-            under: { nested1: { isContent: true, description: "" } },
+            under: { nested1: { isContent: true, description: "", path: "" } },
           },
         }}
       />,
@@ -24,11 +24,11 @@ describe("intergration test for tree", () => {
     render(
       <Tree
         contents={{
-          test1: { description: "", isContent: true },
+          test1: { description: "", isContent: true, path: "" },
           test2: {
             isContent: false,
             description: "",
-            under: { nested1: { isContent: true, description: "" } },
+            under: { nested1: { isContent: true, description: "", path: "" } },
           },
         }}
       />,
