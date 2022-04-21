@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "tsnode": "ts-node src/index.ts",
     "watch": "tsc -p tsconfig.json -w",
-    "build": "webpack --mode production --env.production --progress",
+    "build": "webpack --mode production --env production --progress",
     "dev": "webpack-dev-server --mode development --env development --open --hot --progress",
     "lint:ts": "run-s 'lint:ts:* -- {1}' --",
     "lint:ts:eslint": "eslint",
