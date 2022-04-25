@@ -1,21 +1,9 @@
 import React from "react";
-import { extendTheme, Box, ChakraProvider } from "@chakra-ui/react";
-import { Tree } from "./components/content-tree";
-import { SlideBox } from "./components/slide-box";
+import { Box } from "@chakra-ui/react";
+import { Tree } from "../components/content-tree/tree";
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      "html, body": {
-        margin: 0,
-        padding: 0,
-      },
-    },
-  },
-});
-
-export const App = () => (
-  <ChakraProvider theme={theme}>
+export default function Home() {
+  return (
     <Box height="100vh" width="100vw">
       <Tree
         contents={{
@@ -33,5 +21,5 @@ export const App = () => (
         }}
       />
     </Box>
-  </ChakraProvider>
-);
+  );
+}
