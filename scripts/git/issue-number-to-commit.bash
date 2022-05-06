@@ -14,6 +14,6 @@ if [ -z "$branch_name" ] || [[ is_skipped -ne 0 ]]; then
 fi
 
 issue=`echo -n $branch_name | sed -r "s:^.*(#[0-9]+).*$:\1:"`
-echo `cat $1 | sed -r "s/(.*)?( #.*)/\1/g" | sed "$ s/$/ $issue/"` > $1
+echo `grep -v "^#" $1 | sed -r "s/(.*)?( #.*)/\1/g" | sed "$ s/$/ $issue/"` > $1
 # cat $1 | sed -r "s/(.*)?( #.*)/\1/g" \
 #   | sed "$ s/$/ $issue/" >$1
