@@ -23,6 +23,7 @@
     "@commitlint/types": "^16.2.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@next/bundle-analyzer": "^12.1.6",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
