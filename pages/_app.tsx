@@ -1,22 +1,28 @@
-import React from "react";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { AppProps } from "next/app";
+import React, { useMemo } from "react";
+import type { AppProps } from "next/app";
+import { useVender } from "components/chakra-ui";
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      "html, body": {
-        margin: 0,
-        padding: 0,
+export default function App(props: AppProps) {
+  const chakra = useVender();
+  const page = useMemo(() => {
+    if (chakra == null) return;
+    const { extendTheme, ChakraProvider } = chakra;
+    const theme = extendTheme({
+      styles: {
+        global: {
+          "html, body": {
+            margin: 0,
+            padding: 0,
+          },
+        },
       },
-    },
-  },
-});
-
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
-  );
+    });
+    return ({ Component, pageProps }: AppProps) => (
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    );
+  }, [chakra]);
+  if (page == null) return <div>Loading</div>;
+  return page(props);
 }
