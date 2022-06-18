@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import type { AppProps } from "next/app";
 import { Loading } from "components/loading";
 import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const theme = extendTheme({
   styles: {
@@ -14,11 +15,30 @@ const theme = extendTheme({
   },
 });
 
-export default function App(props: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
+  // console.log({ Component });
+  // const page = <Component {...pageProps} />;
+  // console.log({ page });
+  // return (
+  //   <ChakraProvider theme={theme}>
+  //     <Box height="100vh" width="100vw">
+  //       <Loading />
+  //     </Box>
+  //   </ChakraProvider>
+  // );
+  // return (
+  //   <ChakraProvider theme={theme}>
+  //     <Box height="100vh" width="100vw">
+  //       <AnimatePresence exitBeforeEnter>
+  //         <Component {...pageProps} />
+  //       </AnimatePresence>
+  //     </Box>
+  //   </ChakraProvider>
+  // );
   return (
     <ChakraProvider theme={theme}>
       <Box height="100vh" width="100vw">
-        <Loading />
+        <Component {...pageProps} />
       </Box>
     </ChakraProvider>
   );

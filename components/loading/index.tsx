@@ -9,6 +9,7 @@ export const Loading = () => (
       <ChakraMotion
         initial={{ opacity: 0, y: "100%" }}
         animate={{ opacity: 1, y: "-50%" }}
+        exit={{ opacity: 1, y: "-50%" }}
         transition={{ ease: "linear", duration: 2 } as any}
         height="200%"
         width="100%"
