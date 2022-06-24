@@ -1,8 +1,6 @@
 import React, { useMemo, useState, useCallback } from "react";
 import { Box } from "@chakra-ui/react";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useAsync } from "react-use";
-import { ChakraMotion } from "../chakra-motion";
 import { ShutterUpper } from "./shutter-upper";
 import { Color } from "./type";
 

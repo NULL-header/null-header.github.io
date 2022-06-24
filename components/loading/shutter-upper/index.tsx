@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { ChakraMotion } from "components/chakra-motion";
 import { useAnimation } from "framer-motion";
-import { useAsync, useMount } from "react-use";
+import { useMount } from "react-use";
 import type { Color } from "./type";
 import { Shutter } from "./shutter";
 
