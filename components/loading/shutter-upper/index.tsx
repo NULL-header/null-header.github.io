@@ -2,28 +2,29 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { ChakraMotion } from "components/chakra-motion";
 import { useAnimation } from "framer-motion";
-import { useAsync } from "react-use";
+import { useAsync, useMount } from "react-use";
 import type { Color } from "./type";
 import { Shutter } from "./shutter";
 
 interface ShutterUpperProps {
   backgroundColor: Color;
-  children: JSX.Element;
+  onAnimEnd: () => void;
 }
 
 export const ShutterUpper = ({
   backgroundColor,
-  children,
+  onAnimEnd,
 }: ShutterUpperProps) => {
   const controls = useAnimation();
-  const state = useAsync(async () => {
+  useMount(async () => {
     await controls.start({
       opacity: 1,
       y: "-50%",
       transition: { ease: "linear", duration: 2 },
     });
+    onAnimEnd();
   });
-  return state.loading ? (
+  return (
     <Box overflow="hidden" height="100%" width="100%">
       <ChakraMotion
         initial={{ opacity: 0, y: "100%" }}
@@ -36,10 +37,6 @@ export const ShutterUpper = ({
       >
         <Shutter color={backgroundColor} />
       </ChakraMotion>
-    </Box>
-  ) : (
-    <Box height="100%" width="100%" backgroundColor={backgroundColor}>
-      {children}
     </Box>
   );
 };

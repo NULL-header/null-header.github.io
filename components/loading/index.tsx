@@ -1,29 +1,46 @@
-import React from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { Box } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { useAsync } from "react-use";
 import { ChakraMotion } from "../chakra-motion";
+import { ShutterUpper } from "./shutter-upper";
+import { Color } from "./type";
 
-export const Loading = () => (
-  <Box overflow="hidden" height="100%" width="100%">
-    <AnimatePresence>
-      <ChakraMotion
-        initial={{ opacity: 0, y: "100%" }}
-        animate={{ opacity: 1, y: "-50%" }}
-        exit={{ opacity: 1, y: "-50%" }}
-        transition={{ ease: "linear", duration: 2 } as any}
-        height="200%"
-        width="100%"
-        display="flex"
-        flexDirection="column"
-      >
+interface LoadingProps {
+  backgroundColor: Color;
+}
+
+export const makeLoading =
+  (specified: () => Promise<React.FC>) =>
+  ({ backgroundColor }: LoadingProps) => {
+    const state = useAsync(specified);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const onAnimEnd = useCallback(() => {
+      setHasAnimated(true);
+    }, []);
+    const isEndLoad = useMemo(
+      () => !state.loading && hasAnimated,
+      [state.loading, hasAnimated],
+    );
+    const element = useMemo(() => {
+      if (!isEndLoad)
+        return (
+          <ShutterUpper
+            backgroundColor={backgroundColor}
+            onAnimEnd={onAnimEnd}
+          />
+        );
+      const Component = state.value as React.FC;
+      return (
         <Box
-          backgroundColor="#2b2b2b"
           height="100%"
           width="100%"
-          clipPath="polygon(100% 0,100% 100%,0 100%)"
-        />
-        <Box backgroundColor="#2b2b2b" height="100%" width="100%" />
-      </ChakraMotion>
-    </AnimatePresence>
-  </Box>
-);
+          overflow="hidden"
+          backgroundColor={backgroundColor}
+        >
+          <Component />
+        </Box>
+      );
+    }, [isEndLoad, backgroundColor, onAnimEnd, state.value]);
+    return element;
+  };
