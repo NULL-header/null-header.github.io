@@ -1,6 +1,6 @@
 import React from "react";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
+import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
 
 const theme = extendTheme({
   styles: {
@@ -16,7 +16,9 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <Box height="100vh" width="100vw">
+        <Component {...pageProps} />
+      </Box>
     </ChakraProvider>
   );
 }
