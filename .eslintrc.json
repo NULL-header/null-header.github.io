@@ -47,7 +47,8 @@
     "react/function-component-definition": "off",
     "react/no-unused-prop-types": "off",
     "react/require-default-props": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off"
   },
   "settings": {
     "react": {
@@ -55,3 +56,4 @@
     }
   }
 }
+

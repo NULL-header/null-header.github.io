@@ -9,8 +9,10 @@ interface LoadingProps {
 }
 
 export const makeLoading =
-  (specified: () => Promise<React.FC>) =>
-  ({ backgroundColor }: LoadingProps) => {
+  <T extends unknown = Record<string, never>>(
+    specified: () => Promise<React.FC<T>>,
+  ) =>
+  ({ backgroundColor, props }: LoadingProps & { props: T }) => {
     const state = useAsync(specified);
     const [hasAnimated, setHasAnimated] = useState(false);
     const onAnimEnd = useCallback(() => {
@@ -19,6 +21,10 @@ export const makeLoading =
     const isEndLoad = useMemo(
       () => !state.loading && hasAnimated,
       [state.loading, hasAnimated],
+    );
+    const propsNonNullable = useMemo(
+      () => (props == null ? {} : props),
+      [props],
     );
     const element = useMemo(() => {
       if (!isEndLoad)
@@ -34,11 +40,12 @@ export const makeLoading =
           height="100%"
           width="100%"
           overflow="hidden"
+          display="flex"
           backgroundColor={backgroundColor}
         >
-          <Component />
+          <Component {...(propsNonNullable as any)} />
         </Box>
       );
-    }, [isEndLoad, backgroundColor, onAnimEnd, state.value]);
+    }, [isEndLoad, backgroundColor, onAnimEnd, state.value, propsNonNullable]);
     return element;
   };
