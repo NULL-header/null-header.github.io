@@ -1,6 +1,6 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { IconType } from "react-icons";
-import { Icon, Divider, Box, ChakraStyledOptions } from "@chakra-ui/react";
+import { Icon, Divider, Box } from "@chakra-ui/react";
 
 interface BaseInterfaceProps {
   icon: IconType;
