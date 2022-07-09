@@ -2,8 +2,6 @@ import React, { useMemo } from "react";
 import { IconType } from "react-icons";
 import { Icon, Divider, Box, ChakraStyledOptions } from "@chakra-ui/react";
 
-type BB = ChakraStyledOptions[""];
-
 interface BaseInterfaceProps {
   icon: IconType;
   children: JSX.Element;
