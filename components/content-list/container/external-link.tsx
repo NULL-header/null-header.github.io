@@ -1,17 +1,13 @@
 import React from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
 import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
-import { InterfaceProps } from "./types";
+import { LinkProps } from "./types";
 
-interface ContainerItemProps extends InterfaceProps {
-  link: string;
-}
-
-export const ContainerItem = React.memo(
-  ({ title, link, icon }: ContainerItemProps) => (
+export const ContainerExternalLink = React.memo(
+  ({ title, link, icon }: LinkProps) => (
     <Box {...INTERFACE_PARENT_STYLE}>
       <BaseInterface icon={icon}>
-        <Link flexGrow={1} href={link} _focus={{ outline: "none" }}>
+        <Link flexGrow={1} _focus={{ outline: "none" }} href={link} isExternal>
           <Text>{title}</Text>
         </Link>
       </BaseInterface>
