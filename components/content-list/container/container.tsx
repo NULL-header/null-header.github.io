@@ -7,13 +7,11 @@ import {
   AccordionIcon,
   Text,
 } from "@chakra-ui/react";
-import type { IconType } from "react-icons";
 import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
+import type { InterfaceProps } from "./types";
 
-interface ContainerProps {
-  title: string;
+interface ContainerProps extends InterfaceProps {
   children: JSX.Element | JSX.Element[];
-  icon: IconType;
 }
 export const Container = React.memo(
   ({ title, children, icon }: ContainerProps) => (

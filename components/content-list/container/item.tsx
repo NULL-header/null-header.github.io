@@ -1,12 +1,10 @@
 import React from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
-import type { IconType } from "react-icons";
 import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
+import { InterfaceProps } from "./types";
 
-interface ContainerItemProps {
-  title: string;
+interface ContainerItemProps extends InterfaceProps {
   link: string;
-  icon: IconType;
 }
 
 export const ContainerItem = React.memo(

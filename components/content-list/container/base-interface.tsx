@@ -2,7 +2,7 @@ import React from "react";
 import { IconType } from "react-icons";
 import { Icon, Divider, Box } from "@chakra-ui/react";
 
-interface BaseInterfaceProps {
+export interface BaseInterfaceProps {
   icon: IconType;
   children: JSX.Element;
 }
