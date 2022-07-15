@@ -7,7 +7,7 @@ import {
   AccordionIcon,
   Text,
 } from "@chakra-ui/react";
-import { BaseInterface, INTERFACE_PARENT_STYLE } from "../base-interface";
+import { BaseInterface } from "../base-interface";
 import type { InterfaceProps } from "./types";
 
 interface ContainerProps extends InterfaceProps {
@@ -17,11 +17,13 @@ export const Container = React.memo(
   ({ title, children, icon }: ContainerProps) => (
     <Accordion allowToggle>
       <AccordionItem borderStyle="unset">
-        <AccordionButton {...INTERFACE_PARENT_STYLE}>
+        <AccordionButton width="100%">
           <BaseInterface icon={icon}>
-            <Text textAlign="left">{title}</Text>
+            <Text textAlign="left" flexGrow={1}>
+              {title}
+            </Text>
+            <AccordionIcon />
           </BaseInterface>
-          <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>{children}</AccordionPanel>
       </AccordionItem>
