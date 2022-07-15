@@ -6,7 +6,7 @@ interface GithubLinkProps {
   slug: string;
 }
 
-export const GithubLink = React.memo(({ slug }: GithubLinkProps) => (
+export const ZennLink = React.memo(({ slug }: GithubLinkProps) => (
   <LocalLink
     icon={SiZenn}
     link={`https://zenn.dev/nullheader/articles/${slug}`}
