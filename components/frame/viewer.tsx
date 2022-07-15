@@ -28,7 +28,7 @@ export const Viewer = ({ Component }: ViewerProps) => {
   const content = useMemo(() => {
     if (hasAnimated)
       return (
-        <Box {...commonStyle} overflow="hidden">
+        <Box {...commonStyle} overflow="hidden" padding="5%">
           <Component />
         </Box>
       );
