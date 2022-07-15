@@ -1,6 +1,8 @@
 import type { BaseInterfaceProps } from "../../interface";
 
-export interface LinkProps extends BaseInterfaceProps {
+type InterfaceProps = Omit<BaseInterfaceProps, "children">;
+
+export interface LinkProps extends InterfaceProps {
   title: string;
   link: string;
 }
