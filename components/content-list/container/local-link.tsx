@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
+import { BaseInterface, INTERFACE_PARENT_STYLE } from "../base-interface";
 import { LinkProps } from "./types";
 
 export const ContainerLocalLink = React.memo(

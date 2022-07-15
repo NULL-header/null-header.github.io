@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Link } from "@chakra-ui/react";
-import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
+import { BaseInterface, INTERFACE_PARENT_STYLE } from "../base-interface";
 import { LinkProps } from "./types";
 
 export const ContainerExternalLink = React.memo(

@@ -7,7 +7,7 @@ import {
   AccordionIcon,
   Text,
 } from "@chakra-ui/react";
-import { BaseInterface, INTERFACE_PARENT_STYLE } from "./base-interface";
+import { BaseInterface, INTERFACE_PARENT_STYLE } from "../base-interface";
 import type { InterfaceProps } from "./types";
 
 interface ContainerProps extends InterfaceProps {
