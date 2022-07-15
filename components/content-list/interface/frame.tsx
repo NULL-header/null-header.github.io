@@ -17,11 +17,11 @@ export const Frame = React.memo(
       alignItems="center"
       padding="2"
       paddingX="4"
+      marginY="1vh"
       _hover={{
         backgroundColor: "white",
         textColor: "black",
         color: "black",
-        borderColor: "black",
       }}
     >
       {children}
