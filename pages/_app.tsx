@@ -1,7 +1,8 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
-import { makeLoading } from "components/loading";
+import { Frame } from "components/frame";
+import { ShutterUpper } from "components/shutter-upper";
 
 const theme = extendTheme({
   styles: {
@@ -14,20 +15,28 @@ const theme = extendTheme({
   },
 });
 
-const importer = () => import("components/frame").then((mod) => mod.Frame);
-
-const Frame = makeLoading(importer);
-
 export default function App({ Component, pageProps }: AppProps) {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const onAnimEnd = useCallback(() => {
+    setHasAnimated(true);
+  }, []);
   const Wrapped = useCallback(
     () => <Component {...pageProps} />,
     [Component, pageProps],
   );
-  const frameProps = useMemo(() => ({ Component: Wrapped }), [Wrapped]);
+  const element = useMemo(() => {
+    if (!hasAnimated)
+      return <ShutterUpper onAnimEnd={onAnimEnd} backgroundColor="#2b2b2b" />;
+    return (
+      <Box backgroundColor="#2b2b2b" width="100%" height="100%">
+        <Frame Component={Wrapped} />
+      </Box>
+    );
+  }, [hasAnimated, onAnimEnd, Wrapped]);
   return (
     <ChakraProvider theme={theme}>
       <Box height="100vh" width="100vw">
-        <Frame backgroundColor="#2b2b2b" props={frameProps} />
+        {element}
       </Box>
     </ChakraProvider>
   );
